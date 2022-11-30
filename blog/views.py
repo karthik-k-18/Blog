@@ -68,6 +68,17 @@ posts = [
           aperiam est praesentium, quos iste consequuntur omnis exercitationem quam
           velit labore vero culpa ad mollitia? Quis architecto ipsam nemo. Odio.
         """
+    },
+    {
+        "slug":"stephen-curry",
+        "image":"curry.jpg",
+        "author":"Stephen Curry",
+        "date":date(2021, 7, 21),
+        "title":"Favorite Basketball Player",
+        "excerpt":"I love basketball and my favorite player is Stephen Curry",
+        "content":"""
+        Wardell Stephen Curry II (born March 14, 1988) is an American professional basketball player who plays for the Golden State Warriors of the National Basketball Association (NBA). He is a three-time NBA champion, two-time NBA Most Valuable Player, and three-time NBA All-Star. He is widely regarded as one of the greatest shooters in NBA history. He is the son of former NBA player Dell Curry and the younger brother of former NBA player Seth Curry. He is married to television personality Ayesha Curry.
+        """
     }
 ]
 
