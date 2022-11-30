@@ -1,0 +1,10 @@
+#ignore all pycache files in blog app
+blog/__pycache__/
+#ignore all pycache files in migrations folder
+blog/migrations/__pycache__/
+#ignore all pycache files in MySite folder
+MySite/__pycache__/
+
+
+
+
