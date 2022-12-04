@@ -4,6 +4,8 @@ blog/__pycache__/
 blog/migrations/__pycache__/
 #ignore all pycache files in MySite folder
 MySite/__pycache__/
+#ignore database
+db.sqlite3
 
 
 

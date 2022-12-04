@@ -11,8 +11,13 @@
 
 <section id="summary">
     <h2>{{post.title}}</h2>
+    <div>
+        {% for tag in post.tags.all %}
+        <span class="tag">{{tag}}</span>
+        {% endfor %}
+    </div>
     <article>
-        <img src="{% static 'blog/images/'|add:post.image %}" >
+        <img src="{% static 'blog/images/'|add:post.image_name %}" >
         <address>{{ post.author }}</address>
         <div>
             Last updated on <time>{{ post.date }}</time>
