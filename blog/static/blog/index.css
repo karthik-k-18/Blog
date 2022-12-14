@@ -34,12 +34,12 @@
   }
   
   #latest-posts {
-    background-color: white;
+    background-color: rgb(248, 244, 244);
     padding: 2rem;
     border-radius: 12px;
     width: 60rem;
     margin: -6rem auto 2rem auto;
-    box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+    box-shadow: 1px 1px 12px rgba(8, 0, 254, 0.4);
   }
   
   #latest-posts h2 {
@@ -52,10 +52,18 @@
     padding: 0;
     display: flex;
     gap: 1rem;
+    /* Place a vertical line between each of the list items */
+
   }
   
   #latest-posts li {
     flex: 1;
+    /* Place a vertical line between each of the list items */
+    border-right: 2px solid #1826c6;
+    border-left: 2px solid #1826c6;
+    /* top and bottom also have borders */
+    border-top: 2px solid #1826c6;
+    border-bottom: 2px solid #1826c6;
   }
   
   #about {
