@@ -9,6 +9,15 @@
 
 {% block content %}
 
+{% if comment_form.errors %}
+    <div class="alert">
+
+        <h2>Your comment wasn't saved!</h2>
+        <p>Please Fix the error by entering appropriate data..</p>
+        <a href="#container">Fix It</a>
+    </div>
+{% endif %}
+
 <section id="summary">
     <h2>{{post.title}}</h2>
     <div>
@@ -29,4 +38,35 @@
 <main>
     {{ post.content }}
 </main>
+ 
+{% if comments %}
+<section id="comments">
+    <h2>Comments</h2>
+    {% for comment in comments %}
+    <article>
+        <div>
+            <h3>{{ comment.name }}</h3>
+        </div>
+        <p>{{ comment.comment }}</p>
+    </article>
+    {% endfor %}
+</section>
+{% endif %}
+
+<section id="container">
+    <!-- comment section -->
+    <h2 style="text-align: center;font-weight: bold;" > Any Comments!</h2>
+    <form   action=" {% url 'post_detail' post.slug %} " method="POST">
+        {% csrf_token %}
+        {% for field in comment_form %}
+        <div class="form-control {% if field.errors %} invalid {% endif %} "> 
+            {{ field.label_tag }}
+            {{ field }}
+            <!-- check if this field is email and has error -->
+            {{ field.errors }}
+        </div>
+        {% endfor %}
+        <button type="submit">Save Comment</button>
+</section>
+
 {% endblock %}

@@ -69,3 +69,98 @@ main {
   margin-right: 1rem;
   margin-bottom: 1rem;
 }
+
+.form-control {
+  display: block;
+  padding: 0.5rem;
+}
+
+#container{
+  font: inherit;
+  margin: 0 auto;
+  width: 45%;
+  max-width: 90rem;
+  /* give box shadow */
+  box-shadow: 0 2px 8px rgba(126, 3, 249, 0.25);
+  /* give border radius */
+  border-radius: 12px;
+  /* give padding */
+  padding: 1rem;
+  margin-bottom: 30px;
+}
+
+.form-control label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-control input ,
+.form-control textarea {
+  display: block;
+  width: 100%;
+  font: inherit;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #f1f1f1;
+  
+}
+
+/* give border color  with 2px width to input when focus */
+
+.form-control input:focus,
+.form-control textarea:focus {
+  outline: none;
+  border-color: #7c78e8;
+  border-width: 1.5px;
+}
+
+#container button {
+  display: block;
+  margin: 1rem auto;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 7px;
+  background-color: #390281;
+  color: white;
+  font: inherit;
+  cursor: pointer;
+}
+
+#container button:hover {
+  background-color: #5706c0;
+}
+
+.errorlist li {
+  color: rgb(159, 10, 10);
+}
+
+.invalid input ,
+.invalid textarea{
+  border-color: rgb(159, 10, 10);
+  background-color: rgb(240, 197, 197);
+}
+
+.invalid label {
+  color: rgb(159, 10, 10);
+}
+
+  
+.alert {
+  margin: 8rem auto 3rem auto;
+  border: 1px solid #d6000b;
+  background-color: #ffe6e7;
+  padding: 1rem;
+  width: 90%;
+  max-width: 40rem;
+}
+
+.alert a {
+  text-decoration: none;
+  border: 1px solid #d6000b;
+  background-color: #d6000b;
+  color: white;
+  padding: 0.25rem 1.5rem;
+  border-radius: 6px;
+}

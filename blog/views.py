@@ -1,9 +1,12 @@
 from django.shortcuts import render
 # import http response
-from django.http import HttpResponse
+from django.http import  Http404
 from datetime import date
 #import models
-from .models import Post, Author, Tag
+from .models import Post, Comment
+#import forms
+from .forms import CommentForm
+
 
 # Create your views here.
 
@@ -27,6 +30,35 @@ def all_posts(request):
 
 def post_detail(request, slug):
     identified_post = Post.objects.get(slug=slug)
-    return render(request, "blog/post-detail.html", {
-        "post": identified_post
-    })
+    comments=identified_post.comments.all().order_by("-date")
+    if request.method == "GET":
+        return render(request, "blog/post-detail.html", {
+            "post": identified_post,
+            "comments": comments,
+            "comment_form": CommentForm()
+        })
+    elif request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            new_comment = Comment(
+                name=form.cleaned_data["name"],
+                email=form.cleaned_data["email"],
+                comment=form.cleaned_data["comment"],
+                post=identified_post
+            )
+            new_comment.save()
+            return render(request, "blog/post-detail.html", {
+                "post": identified_post,
+                "comment_form": CommentForm(),
+                "comments": comments,
+                "message": "Your comment has been added!"
+            })
+        else:
+            return render(request, "blog/post-detail.html", {
+                "post": identified_post,
+                "comment_form": form,
+                "comments": comments,
+                "message": "Your comment was not added. Please try again."
+            })
+    else:
+        return Http404()
