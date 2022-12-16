@@ -1,0 +1,18 @@
+{% extends 'base.html' %} 
+{% load static %}
+{% block title %}Read-Later{% endblock %} 
+{% block css_files %}
+<link rel="stylesheet" href="{% static "blog/read-later.css" %}" />
+{% endblock %}
+{% block content %}
+ <section id="stored-posts">
+    <ul>
+        {% for post in posts %}
+            <li>
+                <!-- <img src="{{ post.image.url }}" alt="post image" /> -->
+                <a href="{% url 'post_detail' post.slug %}">{{ post.title }}</a>
+            </li>
+        {% endfor %}
+    </ul>
+ </section>
+{% endblock %}

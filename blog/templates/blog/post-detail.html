@@ -25,6 +25,19 @@
         <span class="tag">{{tag}}</span>
         {% endfor %}
     </div>
+
+    <div id="read-later">
+        <form  action="{% url 'read-later' %}" method="post">
+            {% csrf_token %}
+            <input type="hidden" value="{{ post.id }}" name="post-id">
+                {% if not is_added_to_read_later %}
+                    <button type="submit">Read Later</button>
+                {% else %}
+                    <button type="submit">Remove from Read Later</button>
+                {% endif %}
+        </form>
+    </div>
+
     <article>
         <img src="{{post.image.url}}">
         <address>{{ post.author }}</address>
@@ -40,22 +53,26 @@
 </main>
  
 {% if comments %}
-<section id="comments">
-    <h2>Comments</h2>
-    {% for comment in comments %}
-    <article>
-        <div>
-            <h3>{{ comment.name }}</h3>
-        </div>
-        <p>{{ comment.comment }}</p>
-    </article>
-    {% endfor %}
-</section>
+<div id="comments">
+    <h1 style="text-align: center;font-weight: bold;">Comment - Section !</h1>
+    <ul>
+        {% for comment in comments %}
+        <li>
+            <h2>
+                {{comment.name}}
+                <!-- output date only not time -->
+                <time>{{ comment.date }}</time>
+            </h2>
+            <p>{{ comment.comment }}</p>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
 {% endif %}
 
 <section id="container">
     <!-- comment section -->
-    <h2 style="text-align: center;font-weight: bold;" > Any Comments!</h2>
+    <h2> Any Comments!</h2>
     <form   action=" {% url 'post_detail' post.slug %} " method="POST">
         {% csrf_token %}
         {% for field in comment_form %}
