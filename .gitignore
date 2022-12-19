@@ -6,3 +6,5 @@ blog/migrations/__pycache__/
 MySite/__pycache__/
 #ignore database
 db.sqlite3
+#settings file
+MySite/settings.py
