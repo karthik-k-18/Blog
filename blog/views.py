@@ -34,10 +34,13 @@ def post_detail(request, slug):
     identified_post = Post.objects.get(slug=slug)
     comments=identified_post.comments.all().order_by("-date")
     stored_posts = request.session.get("read_later")
-    if identified_post.id not in stored_posts:
+    if(stored_posts is None):
         is_added_to_read_later = False
     else:
-        is_added_to_read_later = True
+        if identified_post.id not in stored_posts:
+            is_added_to_read_later = False
+        else:
+            is_added_to_read_later = True
     if request.method == "GET":
         return render(request, "blog/post-detail.html", {
             "post": identified_post,
@@ -92,8 +95,11 @@ def read_later(request):
     else:
         stored_posts = list()
         # print(request.session.get("read_later"))
-        for post_id in request.session.get("read_later"):
-            stored_posts.append(Post.objects.get(id=post_id))
+        if request.session.get("read_later") is None:
+            stored_posts = list()
+        else:
+            for post_id in request.session.get("read_later"):
+                stored_posts.append(Post.objects.get(id=post_id))
         return render(request, "blog/read-later.html", {
             "posts": stored_posts,
         })
