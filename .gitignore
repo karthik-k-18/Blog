@@ -5,6 +5,3 @@ blog/migrations/__pycache__/
 #ignore all pycache files in MySite folder
 MySite/__pycache__/
 #ignore database
-db.sqlite3
-#settings file
-MySite/settings.py
