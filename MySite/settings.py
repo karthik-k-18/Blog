@@ -12,6 +12,11 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 
 from pathlib import Path
 
+#import psycopg2
+import psycopg2
+
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -83,6 +88,23 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+#     "default": {
+#         "ENGINE": "django.db.backends.postgresql",
+#         "NAME": "hkthtsjb",
+#         "USER": "hkthtsjb",
+#         "PASSWORD": "io-IsYpBV3tYVC6gKG3zj2x6WIhUNbI3",
+#         "HOST": "mel.db.elephantsql.com",
+#         "PORT": "5432",
+        
+#     }
+# }
+
+#connect to postgres using url
+#postgres://hkthtsjb:io-IsYpBV3tYVC6gKG3zj2x6WIhUNbI3@mel.db.elephantsql.com/hkthtsjb
+
+
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -108,7 +130,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "Asia/Kolkata"
 
 USE_I18N = True
 
@@ -131,6 +153,10 @@ STATICFILES_DIRS = [
 ]
 
 # include media
+
+#static root
+
+STATIC_ROOT = BASE_DIR / "staticfiles"
 
 MEDIA_URL = "media/"
 MEDIA_ROOT = BASE_DIR / "media"
